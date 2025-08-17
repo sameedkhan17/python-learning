@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Code Flow Viz</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/styles.css" />
+	<script defer src="https://unpkg.com/cytoscape@3.27.0/dist/cytoscape.min.js"></script>
+	<script defer src="/app.js"></script>
+</head>
+<body>
+	<header class="app-header">
+		<div class="brand">Code Flow Viz</div>
+		<nav class="actions">
+			<button id="btnSample" class="btn secondary">Load Sample</button>
+			<button id="btnAnalyze" class="btn primary">Analyze</button>
+		</nav>
+	</header>
+	<main class="content">
+		<section class="left">
+			<label for="code" class="label">Paste Python code</label>
+			<textarea id="code" placeholder="Paste your Python code here..."></textarea>
+			<div class="options">
+				<label class="checkbox">
+					<input id="useGemini" type="checkbox" checked />
+					<span>Use Gemini 2.5 Flash for preprocessing</span>
+				</label>
+			</div>
+			<div class="panels">
+				<div class="panel">
+					<div class="panel-title">Cleaned code</div>
+					<pre id="cleanCode" class="code"></pre>
+				</div>
+				<div class="panel">
+					<div class="panel-title">Diagnostics</div>
+					<ul id="diagnostics"></ul>
+				</div>
+			</div>
+		</section>
+		<section class="right">
+			<div id="cy"></div>
+		</section>
+	</main>
+	<footer class="app-footer">
+		<div>
+			Built with FastAPI + Cytoscape. Gemini preprocessing optional.
+		</div>
+	</footer>
+</body>
+</html>
